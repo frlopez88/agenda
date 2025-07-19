@@ -2,8 +2,26 @@ import { pool } from "../db/cn.js";
 
 export const getPerson = async (req, res)=>{
 
-    const sql = `select * from agenda.person`
+    const sql = `select person_id, 
+                        name, 
+                        to_char(birth_date, 'dd-mon-yyyy') birth_date,
+                        gender 
+                from agenda.person`
     const result = await pool.query(sql)
+    return res.json( result.rows )
+
+}
+
+export const getPersonId = async (req, res)=>{
+
+    const {person_id} = req.params;
+
+    const sql = `select person_id, 
+                        name, 
+                        to_char(birth_date, 'dd-mon-yyyy') birth_date,
+                        gender 
+                from agenda.person where person_id = $1`
+    const result = await pool.query(sql, [person_id])
     return res.json( result.rows )
 
 }

@@ -13,6 +13,23 @@ export const getPhone = async (req, res)=>{
 
 }
 
+export const getPhonePerUser = async (req, res)=>{
+
+    const {person_id} = req.params;
+
+    const sql = `select a.phone_id, 
+                        a.person_id, 
+                        b.name as person_name, 
+                        a.phone_number
+                from agenda.phones a 
+                inner join agenda.person b on a.person_id = b.person_id
+                where a.person_id = $1`
+    const result = await pool.query(sql , [person_id])
+
+    return res.json( result.rows )
+
+}
+
 export const postPhone = async (req, res)=>{
 
     const sql = `insert into agenda.phones (phone_number,person_id) values ($1, $2)`
