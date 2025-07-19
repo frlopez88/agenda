@@ -1,6 +1,6 @@
 import express from 'express'
 const app = express()
-const port = 80
+const port = 443
 import { person } from './routes/personRoute.js'
 import {phone} from './routes/phoneRoute.js'
 import cors from 'cors'
