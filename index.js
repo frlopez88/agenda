@@ -6,7 +6,7 @@ import { person } from './routes/personRoute.js'
 import { phone } from './routes/phoneRoute.js'
 import cors from 'cors'
 
-const port = 443
+const port = 80
 
 
 app.use(express.json()) // this enable JSON communication 
