@@ -9,7 +9,7 @@ import fs from 'fs'
 import https from 'https'
 
 const enviroment = process.env.NODE_ENVIROMENT;
-const port = 3000
+let port = 3000
 
 if (enviroment === 'production') {
     port = 443
