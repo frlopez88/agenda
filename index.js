@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 import { person } from './routes/personRoute.js'
 import { phone } from './routes/phoneRoute.js'
+import { user } from './routes/userRoute.js'
 import cors from 'cors'
 import fs from 'fs'
 import https from 'https'
@@ -20,6 +21,7 @@ app.use(express.json()) // this enable JSON communication
 app.use(cors())
 app.use('/api/', person)
 app.use('/api/', phone)
+app.use('/api/', user)
 
 if (enviroment === 'production') {
 
