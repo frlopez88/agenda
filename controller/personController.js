@@ -18,7 +18,7 @@ export const getPersonId = async (req, res)=>{
 
     const sql = `select person_id, 
                         name, 
-                        to_char(birth_date, 'dd-mon-yyyy') birth_date,
+                        to_char(birth_date, 'yyyy-MM-dd') birth_date,
                         gender 
                 from agenda.person where person_id = $1`
     const result = await pool.query(sql, [person_id])
